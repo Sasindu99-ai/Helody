@@ -12,10 +12,11 @@ class Theme:
     theme: QColor
     primary: QColor
     secondary: QColor
+    seperator: QColor
 
     def __init__(self, background: str = "", foreground: str = "", background_reverse: str = "",
                  foreground_reverse: str = "", accent: str = "", theme: str = "", primary: str = "",
-                 secondary: str = ""):
+                 secondary: str = "", seperator: str = ""):
         self.background = QColor(background)
         self.foreground = QColor(foreground)
         self.backgroundReverse = QColor(background_reverse)
@@ -24,6 +25,7 @@ class Theme:
         self.theme = QColor(theme)
         self.primary = QColor(primary)
         self.secondary = QColor(secondary)
+        self.seperator = QColor(seperator)
 
 
 class ColorTheme:
@@ -34,11 +36,13 @@ class ColorTheme:
     theme: Theme
     __light: Theme = Theme(
         background="#EBEBEB",
-        foreground="#000000"
+        foreground="#000000",
+        seperator="#BBBBBB"
     )
     __dark: Theme = Theme(
         background="#DFDFDF",
-        foreground="#FFFFFF"
+        foreground="#FFFFFF",
+        seperator="#BBBBBB"
     )
     __themes = [__light, __dark]
 

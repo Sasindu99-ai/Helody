@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QWidget
 from Core import Window
+from Util import UI
 
 __all__ = ['View']
 
@@ -15,3 +16,9 @@ class View(QWidget):
 
         if name:
             self.setObjectName(name)
+
+    def dp(self, unit: int) -> int:
+        return UI.dp(unit, self.devicePixelRatio())
+
+    def sp(self, unit: int) -> int:
+        return UI.sp(unit, self.devicePixelRatio())

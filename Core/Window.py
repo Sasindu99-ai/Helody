@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMainWindow, QStackedWidget, QWidget, QGridLayout, Q
 
 __all__ = ["Window"]
 
-from Components import Margin
+from Components.Common.Margin import Margin
 
 
 class Window(QMainWindow):

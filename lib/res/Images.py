@@ -22,8 +22,14 @@ class Images(metaclass=ImagesMeta):
     __BASE__ = "lib/res/images/"
     __THEME__ = "0/"
 
-    def __init__(self, theme: int = ""):
+    def __init__(self, theme: int = 0):
         if theme is not None and theme != "":
             self.__THEME__ = str(theme) + "/"
 
     icon = "helody.png"
+    menu = "menu.png"
+    home = "home.png"
+    playlist = "playlist.png"
+    explore = "explore.png"
+    settings = "settings.png"
+    song = "song.png"
