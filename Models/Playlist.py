@@ -1,9 +1,9 @@
 from sqlalchemy import Integer, String, Column
 
-from Helody import db
+from lib import db
 
 
-class Playlists(db.Model):
+class Playlist(db.Model):
     __tablename__ = "playlists"
 
     id = Column(Integer, primary_key=True)

@@ -40,11 +40,18 @@ class Window(QMainWindow):
         self.setCentralWidget(self.mainWidget)
 
     def navigate(self, view):
+        resume = False
         if view is None:
             return
+        if view in self.__VIEWS:
+            resume = True
         if view not in self.__VIEWS:
             self.__VIEWS.append(view)
             page = view(self)
             self.__PAGES.append(page)
             self.centralWidget.addWidget(page)
         self.centralWidget.setCurrentIndex(self.__VIEWS.index(view))
+        if resume:
+            self.__PAGES[self.__VIEWS.index(view)].onResume()
+        if not resume:
+            self.__PAGES[self.__VIEWS.index(view)].onCreate()

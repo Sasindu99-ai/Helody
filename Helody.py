@@ -3,11 +3,9 @@ import os
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon, QPalette
 
-from Components.Common.Menu import Menu
-from Components.Common.MenuButton import MenuButton
-from Components.Common.Seperator import Seperator
-from Core import Window
-from Util import UI
+from Components import Menu, Button, Seperator
+from Core import Window, Player
+from Util import UI, Styles
 from Views import HomeView, PlayListsView
 from lib import Images, Color
 
@@ -17,6 +15,7 @@ os.chdir(ROOTPATH)
 
 class Helody(Window):
     menu: Menu
+    player: Player
 
     def __init__(self):
         super(Helody, self).__init__(row=2, column=2)
@@ -31,9 +30,11 @@ class Helody(Window):
         self.setPalette(pal)
         self.setFocus()
         self.setStyleSheet("""
-        QMainWindow {background-color: """ + UI.colorHex(Color.theme.background.getRgb()) + """;}""")
+        QMainWindow {background-color: """ + UI.colorHex(Color.theme.background.getRgb()) + """;}
+        """)
 
         self.setUpMenu()
+        self.setupPlayer()
 
         self.navigate(HomeView)
 
@@ -42,21 +43,21 @@ class Helody(Window):
     def setUpMenu(self): # noqa
         self.menu = Menu(self)
 
-        self.menu.menu = MenuButton(Images.menu, "menu")
+        self.menu.menu = Button(Images.menu, "menu", style=Styles.menuButton)
 
         self.menu.seperator = Seperator(Qt.Horizontal, 6, Color.theme.seperator)
         self.menu.seperator.setMinimumHeight(3)
         self.menu.seperator.setContentsMargins(5, 6, 5, 10)
 
-        self.menu.home = MenuButton(Images.home, "home")
-        self.menu.home.onClick(lambda: self.navigate(HomeView))
+        self.menu.home = Button(Images.home, "home", style=Styles.menuButton,
+                                action=lambda: self.navigate(HomeView))
 
-        self.menu.playlist = MenuButton(Images.playlist, "playlists")
-        self.menu.playlist.onClick(lambda: self.navigate(PlayListsView))
+        self.menu.playlist = Button(Images.playlist, "playlists", style=Styles.menuButton,
+                                    action=lambda: self.navigate(PlayListsView))
 
-        self.menu.explore = MenuButton(Images.explore, "explore")
+        self.menu.explore = Button(Images.explore, "explore", style=Styles.menuButton)
 
-        self.menu.settings = MenuButton(Images.settings, "settings")
+        self.menu.settings = Button(Images.settings, "settings", style=Styles.menuButton)
 
         # [Add Widgets]
         self.menu.layout.addWidget(self.menu.menu)
@@ -68,3 +69,6 @@ class Helody(Window):
         self.menu.layout.addWidget(self.menu.settings)
 
         self.mainLayout.addWidget(self.menu, 2, 1, 1, 1)
+
+    def setupPlayer(self): # noqa
+        self.player = Player(self)

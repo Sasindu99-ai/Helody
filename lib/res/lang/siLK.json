@@ -1,3 +1,25 @@
 {
-  "menu": "මෙනු"
+    "menu": "මෙනු",
+    "home": "නිවස",
+    "playlists": "ධාවන ලැයිස්තු",
+    "explore": "ගවේෂණය",
+    "settings": "සැකසීම්",
+    "song-title": "සංගීතය දැනෙන්න",
+    "lyrics": "Lyrics",
+    "shuffle": "Shuffle",
+    "repeat": "Repeat",
+    "repeat-one": "Repeat One",
+    "maximize": "Maximize",
+    "minimize": "Minimize",
+    "low-volume": "Low Volume",
+    "medium-volume": "Medium Volume",
+    "high-volume": "High Volume",
+    "mute": "Mute",
+    "open-files": "Open Files",
+    "previous": "Previous",
+    "play": "Play",
+    "pause": "Pause",
+    "next": "Next",
+    "stop": "Stop",
+    "playlist": "Playlist"
 }

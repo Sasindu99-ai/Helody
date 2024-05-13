@@ -18,7 +18,27 @@ class View(QWidget):
             self.setObjectName(name)
 
     def dp(self, unit: int) -> int:
+        """
+        This method is used to convert the given unit to device-independent pixels.
+        dp(self, unit: int) -> int
+        :param unit: int
+        :return: int
+        """
         return UI.dp(unit, self.devicePixelRatio())
 
     def sp(self, unit: int) -> int:
+        """
+        This method is used to convert the given unit to scaled pixels.
+        sp(self, unit: int) -> int
+        :param unit: int
+        :return: int
+        """
         return UI.sp(unit, self.devicePixelRatio())
+
+    def onCreate(self):  # noqa
+        """ onCreate(self) """
+        pass
+
+    def onResume(self):  # noqa
+        """ onResume(self) """
+        pass

@@ -87,13 +87,13 @@ class ImageLabel(QWidget):
         self.image = ImageViewer(image, antialiasing)
         self.layout().addWidget(self.image)
 
-        self.setHeight(self.width(), self.height())
+        self.setSize(self.width(), self.height())
 
     def setPixmap(self, image: str):  # noqa
         self.image.setImage(image)
 
     def resizeEvent(self, a0: QResizeEvent) -> None:
-        self.setHeight(a0.size().width(), a0.size().height())
+        self.setSize(a0.size().width(), a0.size().height())
 
-    def setHeight(self, width: int, height: int):  # noqa
+    def setSize(self, width: int, height: int):  # noqa
         self.image.setHeight(width, height)
