@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QMainWindow, QStackedWidget, QWidget, QGridLayout, QSizePolicy
+from PyQt5.QtWidgets import QGridLayout, QMainWindow, QSizePolicy, QStackedWidget, QWidget
 
 __all__ = ["Window"]
 
@@ -19,23 +19,29 @@ class Window(QMainWindow):
         row: int = 1, column: int = 1, rowSpan: int = 1, columnSpan: int = 1,
         alignment: Union[Qt.Alignment, Qt.AlignmentFlag] = Qt.Alignment())
         """
-        super(QMainWindow, self).__init__(__kwargs.get("parent"),
-                                          __kwargs.get("flags") if "flags" in __kwargs else Qt.WindowFlags())
-        
+        super(QMainWindow, self).__init__(
+            __kwargs.get("parent"),
+            __kwargs.get("flags") if "flags" in __kwargs else Qt.WindowFlags())
+
         self.mainWidget = QWidget()
         self.mainLayout = QGridLayout(self.mainWidget)
         self.mainLayout.setSpacing(0)
         self.mainLayout.setContentsMargins(Margin(5))
         self.mainWidget.setLayout(self.mainLayout)
-        self.mainWidget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.mainWidget.setSizePolicy(QSizePolicy.Expanding,
+                                      QSizePolicy.Expanding)
 
         self.centralWidget = QStackedWidget()
         row = __kwargs.get("row") if "row" in __kwargs.keys() else 1
         column = __kwargs.get("column") if "column" in __kwargs.keys() else 1
-        row_span = __kwargs.get("rowSpan") if "rowSpan" in __kwargs.keys() else 1
-        column_span = __kwargs.get("columnSpan") if "columnSpan" in __kwargs.keys() else 1
-        alignment = __kwargs.get("alignment") if "alignment" in __kwargs.keys() else Qt.Alignment()
-        self.mainLayout.addWidget(self.centralWidget, row, column, row_span, column_span, alignment)
+        row_span = __kwargs.get(
+            "rowSpan") if "rowSpan" in __kwargs.keys() else 1
+        column_span = __kwargs.get(
+            "columnSpan") if "columnSpan" in __kwargs.keys() else 1
+        alignment = __kwargs.get(
+            "alignment") if "alignment" in __kwargs.keys() else Qt.Alignment()
+        self.mainLayout.addWidget(self.centralWidget, row, column, row_span,
+                                  column_span, alignment)
 
         self.setCentralWidget(self.mainWidget)
 

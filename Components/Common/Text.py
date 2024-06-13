@@ -1,6 +1,6 @@
-from PyQt5.QtGui import QPalette, QFont
+from PyQt5.QtCore import QEvent, Qt
+from PyQt5.QtGui import QFont, QPalette
 from PyQt5.QtWidgets import QLabel
-from PyQt5.QtCore import Qt, QEvent
 
 
 class Text(QLabel):
@@ -24,7 +24,8 @@ class Text(QLabel):
 
     def updateText(self):  # noqa
         font_metrics = self.fontMetrics()
-        elided_text = font_metrics.elidedText(self._full_text, self._elide_mode, self.width())
+        elided_text = font_metrics.elidedText(self._full_text,
+                                              self._elide_mode, self.width())
         super().setText(elided_text)
 
     def setText(self, text: str):

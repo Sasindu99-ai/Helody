@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget
+
 from Core import Window
 from Util import UI
 

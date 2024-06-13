@@ -1,12 +1,16 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPalette, QColor
-from PyQt5.QtWidgets import QSizePolicy, QFrame
+from PyQt5.QtGui import QColor, QPalette
+from PyQt5.QtWidgets import QFrame, QSizePolicy
 
 __all__ = "Separator"
 
 
 class Seperator(QFrame):
-    def __init__(self, orientation: Qt.Orientation = Qt.Horizontal, height: int = 3, background: QColor = None):
+
+    def __init__(self,
+                 orientation: Qt.Orientation = Qt.Horizontal,
+                 height: int = 3,
+                 background: QColor = None):
         super(Seperator, self).__init__()
         if orientation == Qt.Vertical:
             self.setFrameShape(QFrame.VLine)

@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "helody"
+version = "0.1.0"
+description = "Music Player"
+authors = ["Sasindu Sulochana <sasindusulochana99@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pyqt5 = "^5.15.10"
+sqlalchemy = "^2.0.30"
+pyqt5-qt5 = "^5.15.14"
+pyqt5-sip = "^12.13.0"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.0.0"
+pre-commit = "^3.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

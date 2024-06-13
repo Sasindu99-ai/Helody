@@ -1,5 +1,7 @@
 import sys
+
 from PyQt5.QtWidgets import QApplication
+
 from Helody import Helody
 
 if __name__ == '__main__':

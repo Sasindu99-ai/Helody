@@ -1,6 +1,6 @@
 import enum
-import os
 import json
+import os
 
 __all__ = ["Locale", "Localized"]
 
@@ -15,7 +15,8 @@ class LocalizedStrings:
     json: dict = {}
 
     def __init__(self):
-        with open(os.getcwd() + f"/lib/res/lang/{self.locale.name}.json", "r") as file:
+        with open(os.getcwd() + f"/lib/res/lang/{self.locale.name}.json",
+                  "r") as file:
             self.json = json.load(file)
 
     def get(self, key: str) -> str:

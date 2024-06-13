@@ -1,6 +1,5 @@
-from Core.Window import Window
-from Core.Database import Database
-from Core.View import View
 from Core.Player import Player
+from Core.View import View
+from Core.Window import Window
 
-__all__ = ['Window', 'View', 'Database', 'Player']
+__all__ = ['Window', 'View', 'Player']

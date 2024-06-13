@@ -1,6 +1,6 @@
-from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtGui import QPainter, QPixmap, QPainterPath, QResizeEvent
-from PyQt5.QtWidgets import QLabel, QWidget, QHBoxLayout
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QPainter, QPainterPath, QPixmap, QResizeEvent
+from PyQt5.QtWidgets import QHBoxLayout, QLabel, QWidget
 
 from Util import UI
 
@@ -38,7 +38,8 @@ class ImageViewer(QLabel):
 
     def updateScaled(self):  # noqa
         if self._pixmap is not None:
-            self._scaled = self._pixmap.scaled(self.size(), self._ratio, self._transformation)
+            self._scaled = self._pixmap.scaled(self.size(), self._ratio,
+                                               self._transformation)
         self.update()
 
     def sizeHint(self):
@@ -59,7 +60,8 @@ class ImageViewer(QLabel):
             qp.setRenderHint(QPainter.HighQualityAntialiasing, True)
             qp.setRenderHint(QPainter.SmoothPixmapTransform, True)
         path = QPainterPath()
-        path.addRoundedRect(0, 0, self.width(), self.height(), self._radius, self._radius)
+        path.addRoundedRect(0, 0, self.width(), self.height(), self._radius,
+                            self._radius)
         qp.setClipPath(path)
         qp.drawPixmap(r, self._scaled)
         self.update()
@@ -70,7 +72,8 @@ class ImageViewer(QLabel):
         if self._pixmap:
             self._sizeHint = size
             self.updateGeometry()
-            self._scaled = self._pixmap.scaled(size, self._ratio, self._transformation)
+            self._scaled = self._pixmap.scaled(size, self._ratio,
+                                               self._transformation)
             self.update()
 
 

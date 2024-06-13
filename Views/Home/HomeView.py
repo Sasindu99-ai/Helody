@@ -1,14 +1,19 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPalette
-from PyQt5.QtWidgets import QVBoxLayout, QStackedWidget, QSizePolicy, QWidget, QHBoxLayout
+from PyQt5.QtWidgets import QHBoxLayout, QSizePolicy, QStackedWidget, QVBoxLayout, QWidget
 
-from Components import Button, ImageLabel, Slider, Text
-from Core import Window, View
-from Util import Styles
+from Components.Common.ImageLabel import ImageLabel
+from Components.Common.Slider import Slider
+from Components.Common.Text import Text
+from Components.Home.HomeButton import HomeButton
+from Components.Home.MiniButton import MiniButton
+from Core import View, Window
 from lib import Color, Images, Localized
+from Util import Styles
 
 
 class HomeView(View):
+
     def __init__(self, parent: Window):
         super(HomeView, self).__init__(parent, "Home")
 
@@ -56,12 +61,12 @@ class HomeView(View):
         self.actions.layout().setSpacing(0)
         self.actions.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.sort = Button(Images.sort, "sort-by", Styles.miniButtonSize, Styles.miniButton, (10, 0))
-        self.songInfo = Button(Images.songInfo, "song-info", Styles.miniButtonSize, Styles.miniButton, (10, 0))
-        self.lyricsButton = Button(Images.lyrics, "lyrics", Styles.miniButtonSize, Styles.miniButton, (10, 0))
-        self.shuffle = Button(Images.shuffle, "shuffle", Styles.miniButtonSize, Styles.miniButton, (10, 0))
-        self.repeat = Button(Images.overPlay, "repeat", Styles.miniButtonSize, Styles.miniButton, (10, 0))
-        self.fullScreen = Button(Images.maximize, "maximize", Styles.miniButtonSize, Styles.miniButton, (10, 0))
+        self.sort = MiniButton(Images.sort, "sort-by")
+        self.songInfo = MiniButton(Images.songInfo, "song-info")
+        self.lyricsButton = MiniButton(Images.lyrics, "lyrics")
+        self.shuffle = MiniButton(Images.shuffle, "shuffle")
+        self.repeat = MiniButton(Images.overPlay, "repeat")
+        self.fullScreen = MiniButton(Images.maximize, "maximize")
 
         self.actions.layout().addWidget(self.sort)
         self.actions.layout().addWidget(self.songInfo)
@@ -114,17 +119,19 @@ class HomeView(View):
         self.controls.layout().setSpacing(0)
         self.controls.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.volume = Button(Images.lowVolume, "low-volume", Styles.defaultButtonSize, Styles.defaultButton,
-                             (10, 10))
-        self.openFiles = Button(Images.openFiles, "open-files", Styles.defaultButtonSize, Styles.defaultButton,
-                                (10, 10))
-        self.previous = Button(Images.previous, "previous", Styles.defaultButtonSize, Styles.defaultButton,
-                               (10, 10))
-        self.play = Button(Images.play, "play", Styles.defaultButtonSize, Styles.defaultButton, (10, 10))
-        self.next = Button(Images.next, "next", Styles.defaultButtonSize, Styles.defaultButton, (10, 10))
-        self.stop = Button(Images.stop, "stop", Styles.defaultButtonSize, Styles.defaultButton, (10, 10))
-        self.playingList = Button(Images.playingList, "playing-list", Styles.defaultButtonSize,
-                                  Styles.defaultButton, (10, 10))
+        self.volume = HomeButton(Images.lowVolume, "low-volume")
+        self.openFiles = HomeButton(
+            Images.openFiles,
+            "open-files",
+            action=lambda: self.parent.openFiles(
+                self.parent.player.currentPlaylist, True))
+        self.previous = HomeButton(Images.previous, "previous")
+        self.play = HomeButton(Images.play,
+                               "play",
+                               action=self.parent.player.play)
+        self.next = HomeButton(Images.next, "next")
+        self.stop = HomeButton(Images.stop, "stop")
+        self.playingList = HomeButton(Images.playingList, "playing-list")
 
         self.controls.layout().addWidget(self.volume)
         self.controls.layout().addStretch()

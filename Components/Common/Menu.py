@@ -1,7 +1,7 @@
 import enum
 from typing import Any
 
-from PyQt5.QtWidgets import QWidget, QLayout, QVBoxLayout
+from PyQt5.QtWidgets import QLayout, QVBoxLayout, QWidget
 
 from Core import Window
 from Util import UI
@@ -33,7 +33,7 @@ class Menu(QWidget):
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.layout)
 
-    def setCurrentTab(self, tab: Tabs): # noqa
+    def setCurrentTab(self, tab: Tabs):  # noqa
         self.activeTab = tab
 
     def navigate(self, view: Any):

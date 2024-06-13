@@ -52,4 +52,3 @@ class Images(metaclass=ImagesMeta):
     next = "next.png"
     stop = "stop.png"
     playingList = "playingList.png"
-

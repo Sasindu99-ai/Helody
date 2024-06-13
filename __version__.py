@@ -20,11 +20,7 @@ __classifiers__ = [
     "Programming Language :: Python :: 3",
     "Topic :: Multimedia :: Sound/Audio :: Players",
 ]
-__entry_points__ = {
-    "console_scripts": [
-        "helody = Helody.__main__:main"
-    ]
-}
+__entry_points__ = {"console_scripts": ["helody = Helody.__main__:main"]}
 __extras_require__ = {
     "dev": [
         "pytest",

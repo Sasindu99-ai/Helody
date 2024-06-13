@@ -1,10 +1,11 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QLabel, QVBoxLayout
 
-from Core import Window, View
+from Core import View, Window
 
 
 class PlayListsView(View):
+
     def __init__(self, parent: Window):
         super(PlayListsView, self).__init__(parent, "PlayLists")
 

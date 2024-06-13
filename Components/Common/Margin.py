@@ -22,8 +22,10 @@ class Margin(QMargins):
             a0: int = __args[0]
             left, top, right, bottom = a0, a0, a0, a0
         elif 0 < len(__kwargs.keys()) <= 2:
-            horizontal = __kwargs["horizontal"] if "horizontal" in __kwargs.keys() else 0
-            vertical = __kwargs["vertical"] if "vertical" in __kwargs.keys() else 0
+            horizontal = __kwargs[
+                "horizontal"] if "horizontal" in __kwargs.keys() else 0
+            vertical = __kwargs["vertical"] if "vertical" in __kwargs.keys(
+            ) else 0
             left, right = horizontal, horizontal
             top, bottom = vertical, vertical
         else:
